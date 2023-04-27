@@ -1,15 +1,8 @@
 # To-Do-List
-Functions:
+To Do List with functions like add task, mark task as done, delete task, clear all tasks.
+Made using PyPQt5.
 
-1)Add a task
-
-2)Mark a task as done
-
-3)Delete a task
-
-4)Clear all tasks
-
-Future add-ons:
+Add-ons to consider:
 
 1)Save file function
 
