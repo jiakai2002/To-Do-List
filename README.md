@@ -9,7 +9,7 @@ Functions:
 
 4)Clear all tasks
 
-Future add-ons
+Future add-ons:
 
 1)Save file function
 
