@@ -23,30 +23,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.clear_pushbutton.clicked.connect(self.clear_task)
         self.done_pushbutton_2.clicked.connect(self.done_task)
 
-        # # set qmovie as label
-        # self.movie = QMovie(random.choice(os.listdir(
-        #     "C:\\Users\\ASUS\\Desktop\\KAI_PYTHON\\gif")))
-        # self.label.setMovie(self.movie)
-        # self.movie.start()
-
         # get music player widget object
         self.player = QMediaPlayer()
-
-    # def play_ani(self):
-    #     # create label
-    #     self.label = QtWidgets.QLabel(self.centralwidget)
-    #     self.label.setGeometry(QtCore.QRect(25, 25, 200, 200))
-    #     self.label.setMinimumSize(QtCore.QSize(200, 200))
-    #     self.label.setMaximumSize(QtCore.QSize(200, 200))
-    #     self.label.setObjectName("label")
-
-    #     # add label to main window
-    #     MainWindow.setCentralWidget(self.centralwidget)
-
-    #     self.anim = QPropertyAnimation(self.child, b"pos")
-    #     self.anim.setEndValue(QPoint(400, 400))
-    #     self.anim.setDuration(1500)
-    #     self.anim.start()
 
     # play music
 
