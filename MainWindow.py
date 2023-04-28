@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.add_pushbutton = QtWidgets.QPushButton(
-            self.centralwidget, clicked=lambda: self.add_task())
+            self.centralwidget)
         self.add_pushbutton.setGeometry(QtCore.QRect(15, 45, 100, 40))
         font = QtGui.QFont()
         font.setFamily("Roboto")
@@ -50,7 +50,7 @@ class Ui_MainWindow(object):
         self.typetask_lineEdit.setAutoFillBackground(False)
         self.typetask_lineEdit.setObjectName("typetask_lineEdit")
         self.delete_pushbutton = QtWidgets.QPushButton(
-            self.centralwidget, clicked=lambda: self.delete_task())
+            self.centralwidget)
         self.delete_pushbutton.setGeometry(QtCore.QRect(215, 45, 100, 40))
         font = QtGui.QFont()
         font.setFamily("Roboto")
@@ -61,7 +61,7 @@ class Ui_MainWindow(object):
         self.delete_pushbutton.setMouseTracking(True)
         self.delete_pushbutton.setObjectName("delete_pushbutton")
         self.clear_pushbutton = QtWidgets.QPushButton(
-            self.centralwidget, clicked=lambda: self.clear_task())
+            self.centralwidget)
         self.clear_pushbutton.setGeometry(QtCore.QRect(315, 45, 100, 40))
         font = QtGui.QFont()
         font.setFamily("Roboto")
@@ -72,7 +72,7 @@ class Ui_MainWindow(object):
         self.clear_pushbutton.setMouseTracking(True)
         self.clear_pushbutton.setObjectName("clear_pushbutton")
         self.done_pushbutton_2 = QtWidgets.QPushButton(
-            self.centralwidget, clicked=lambda: self.done_task())
+            self.centralwidget)
         self.done_pushbutton_2.setGeometry(QtCore.QRect(115, 45, 100, 40))
         font = QtGui.QFont()
         font.setFamily("Roboto")
@@ -136,91 +136,6 @@ class Ui_MainWindow(object):
             _translate("MainWindow", "My Progress:"))
         self.menuOptions.setTitle(_translate("MainWindow", "File"))
         self.actionColour.setText(_translate("MainWindow", "Colour"))
-
-    # add task to list
-    def add_task(self):
-
-        # grab task in the task box
-        item = self.typetask_lineEdit.text()
-
-        if item:
-            # add task into the list
-            self.todolist_listWidget.addItem(item)
-
-        # clear the task box
-            self.typetask_lineEdit.setText("")
-
-        # update progress
-        self.update_progress()
-
-    # delete task from list
-    def delete_task(self):
-
-        # grab the selected task
-        clicked = self.todolist_listWidget.currentRow()
-
-        # delete selected task from todo list
-        self.todolist_listWidget.takeItem(clicked)
-
-        # update progress
-        self.update_progress()
-
-    # clear all tasks from list
-    def clear_task(self):
-        self.todolist_listWidget.clear()
-
-        # update progress
-        self.update_progress()
-
-    # strike out selected task
-    def done_task(self):
-
-        # grab the selected task
-        item = self.todolist_listWidget.currentItem()
-
-        # if selected task is done, undone it instead
-        f = item.font()
-        if f.strikeOut() == True:
-            f.setStrikeOut(False)
-            item.setFont(f)
-
-        # strike out non-empty task
-        elif item:
-            f = item.font()
-            f.setStrikeOut(True)
-            item.setFont(f)
-
-        # update progress
-        self.update_progress()
-
-    # track progress of tasks on progress bar
-    def update_progress(self):
-
-        # grab the total number of rows in the list
-        total = self.todolist_listWidget.count()
-
-        # if empty list, set value to 0
-        if total == 0:
-            value = 0
-
-        # else count number of tasks done
-        else:
-            done = 0
-            for i in range(total):
-                item = self.todolist_listWidget.item(i)
-                f = item.font()
-                if f.strikeOut() == True:
-                    done += 1
-
-            # zero denominator case
-            if done == 0:
-                value = 0
-            else:
-                # calculate progress value
-                value = round(done / total * 100, 2)
-
-        # set the progress value accordingly
-        self.progress_progressBar.setProperty("value", value)
 
 
 if __name__ == "__main__":
