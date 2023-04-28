@@ -10,4 +10,4 @@ Add-ons to consider:
 
 3)Customize colour (background, buttons, etc)
 
-4)Progress bar sound effect/animations
+4)Progress bar sound effect/animations  (DONE)
