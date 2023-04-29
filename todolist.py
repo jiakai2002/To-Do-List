@@ -4,13 +4,14 @@ from MainWindow import Ui_MainWindow
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtCore import QUrl
+from PyQt5.QtWidgets import QMainWindow
 
 
 # We inherit from the main class QtWidgets.QmainWindow
 # We also import and inherit from Ui_MainWindow
 
 
-class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
+class MainWindow(QMainWindow, Ui_MainWindow):
 
     # initilize args as in library
     def __init__(self, *args, **kwargs):
@@ -22,16 +23,31 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.delete_pushbutton.clicked.connect(self.delete_task)
         self.clear_pushbutton.clicked.connect(self.clear_task)
         self.done_pushbutton_2.clicked.connect(self.done_task)
+        self.new_actionNew.triggered.connect(self.new_file)
+        self.save_actionSave.triggered.connect(self.save_file)
+        self.saveas_actionSave_as.triggered.connect(self.saveas_file)
 
         # get music player widget object
         self.player = QMediaPlayer()
+
+    # new file
+    def new_file(self):
+        print("newfile")
+    # save file
+
+    def save_file(self):
+        print("savefile")
+    # saveas file
+
+    def saveas_file(self):
+        print("saveasfile")
 
     # play music
 
     def play_audio(self):
         audio_file = random.choice(os.listdir(
-            "C:\\Users\\ASUS\\Desktop\\KAI_PYTHON\\audio"))
-        file_path = "C:\\Users\\ASUS\\Desktop\\KAI_PYTHON\\audio" + "\\" + audio_file
+            "C:\\Users\\ASUS\\Desktop\\KAI_PYTHON\\todo_list_app\\audio"))
+        file_path = "C:\\Users\\ASUS\\Desktop\\KAI_PYTHON\\todo_list_app\\audio\\" + audio_file
         url = QUrl.fromLocalFile(file_path)
         content = QMediaContent(url)
 
