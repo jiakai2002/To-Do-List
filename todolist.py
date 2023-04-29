@@ -5,10 +5,17 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtCore import QUrl
 from PyQt5.QtWidgets import QMainWindow
-
+import sqlite3
 
 # We inherit from the main class QtWidgets.QmainWindow
 # We also import and inherit from Ui_MainWindow
+
+# create data base table
+conn = sqlite3.connect('mylist.db')
+c = conn.cursor()
+c.execute("CREATE TABLE if not exists todo_list(list_item text)")
+conn.commit()
+conn.close()
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -23,26 +30,50 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.delete_pushbutton.clicked.connect(self.delete_task)
         self.clear_pushbutton.clicked.connect(self.clear_task)
         self.done_pushbutton_2.clicked.connect(self.done_task)
-        self.new_actionNew.triggered.connect(self.new_file)
         self.save_actionSave.triggered.connect(self.save_file)
-        self.saveas_actionSave_as.triggered.connect(self.saveas_file)
 
         # get music player widget object
         self.player = QMediaPlayer()
 
-    # new file
-    def new_file(self):
-        print("newfile")
-    # save file
+        # set up current_path to know if file is open
+        self.current_path = None
+
+        # retrieve save
+        self.grab_database()
+
+    # grab items from database and add to screen
+    def grab_database(self):
+        # grab data in records
+        conn = sqlite3.connect('mylist.db')
+        c = conn.cursor()
+        c.execute("SELECT * FROM todo_list")
+        records = c.fetchall()
+        conn.commit()
+        conn.close()
+
+        # loop through records and add to screen
+        for record in records:
+            print(record)
+            self.todolist_listWidget.addItem(str(record[0]))
 
     def save_file(self):
-        print("savefile")
-    # saveas file
+        conn = sqlite3.connect('mylist.db')
+        c = conn.cursor()
 
-    def saveas_file(self):
-        print("saveasfile")
+        # delete old data in database
+        c.execute('DELETE FROM todo_list;',)
 
-    # play music
+        # add new data in database
+        lw = self.todolist_listWidget
+        items = []
+        for x in range(lw.count()):
+            items.append(lw.item(x))
+        for item in items:
+            c.execute("INSERT INTO todo_list VALUES (:item)",
+                      {'item': item.text()},)
+            print(item.text())
+        conn.commit()
+        conn.close()
 
     def play_audio(self):
         audio_file = random.choice(os.listdir(
@@ -50,7 +81,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         file_path = "C:\\Users\\ASUS\\Desktop\\KAI_PYTHON\\todo_list_app\\audio\\" + audio_file
         url = QUrl.fromLocalFile(file_path)
         content = QMediaContent(url)
-
         self.player.setMedia(content)
         self.player.play()
 

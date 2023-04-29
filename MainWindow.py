@@ -130,9 +130,7 @@ class Ui_MainWindow(object):
         font.setFamily("Roboto")
         self.saveas_actionSave_as.setFont(font)
         self.saveas_actionSave_as.setObjectName("saveas_actionSave_as")
-        self.filemenu_menuOptions.addAction(self.new_actionNew)
         self.filemenu_menuOptions.addAction(self.save_actionSave)
-        self.filemenu_menuOptions.addAction(self.saveas_actionSave_as)
         self.menubar.addAction(self.filemenu_menuOptions.menuAction())
 
         self.retranslateUi(MainWindow)
@@ -140,13 +138,16 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Kai\'s To Do List"))
+        MainWindow.setWindowTitle(_translate(
+            "MainWindow", "Kai\'s To Do List"))
         self.add_pushbutton.setText(_translate("MainWindow", "Add"))
-        self.typetask_lineEdit.setPlaceholderText(_translate("MainWindow", "Type a new task here"))
+        self.typetask_lineEdit.setPlaceholderText(
+            _translate("MainWindow", "Type a new task here"))
         self.delete_pushbutton.setText(_translate("MainWindow", "Delete"))
         self.clear_pushbutton.setText(_translate("MainWindow", "Clear"))
         self.done_pushbutton_2.setText(_translate("MainWindow", "Done"))
-        self.progresslabel_label.setText(_translate("MainWindow", "My Progress:"))
+        self.progresslabel_label.setText(
+            _translate("MainWindow", "My Progress:"))
         self.filemenu_menuOptions.setTitle(_translate("MainWindow", "File"))
         self.actionColour.setText(_translate("MainWindow", "Colour"))
         self.new_actionNew.setText(_translate("MainWindow", "New"))
