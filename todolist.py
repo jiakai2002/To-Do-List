@@ -53,7 +53,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # loop through records and add to screen
         for record in records:
-            print(record)
             self.todolist_listWidget.addItem(str(record[0]))
 
     def save_file(self):
@@ -71,7 +70,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for item in items:
             c.execute("INSERT INTO todo_list VALUES (:item)",
                       {'item': item.text()},)
-            print(item.text())
         conn.commit()
         conn.close()
 
