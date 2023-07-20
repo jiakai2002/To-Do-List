@@ -74,9 +74,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         conn.close()
 
     def play_audio(self):
+        audio_path = os.getcwd() + "/audio"
         audio_file = random.choice(os.listdir(
-            "C:\\Users\\ASUS\\Desktop\\KAI_PYTHON\\todo_list_app\\audio"))
-        file_path = "C:\\Users\\ASUS\\Desktop\\KAI_PYTHON\\todo_list_app\\audio\\" + audio_file
+            audio_path))
+        file_path = audio_path + "/" + audio_file
         url = QUrl.fromLocalFile(file_path)
         content = QMediaContent(url)
         self.player.setMedia(content)
