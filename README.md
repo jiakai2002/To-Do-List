@@ -1,11 +1,55 @@
-# To-Do-List
-To Do List with functions like add task, mark task as done, delete task, clear all tasks.
-Made using PyPQt5.
+# PyQt5 To-Do List Application
 
-Add-ons to consider:
+This is a simple To-Do List application built with Python and PyQt5. It allows users to add, remove, and manage tasks in an intuitive graphical interface.
 
-1)Save file function
+## Features
 
-2)Favourite task (will get pushed to first row)
+- Add tasks to the to-do list
+- Remove tasks from the list
+- Mark tasks as complete or incomplete
+- Save tasks for future sessions
+- Load saved tasks on startup
+- User-friendly PyQt5-based GUI
 
-3)Customize colour (background, buttons, etc)
+## Requirements
+
+To run this application, you will need:
+
+- Python 3.7+ (developed using Python 3.12)
+- PyQt5 (for GUI components)
+
+## Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/yourusername/pyqt5-todo-list.git
+    cd pyqt5-todo-list
+    ```
+
+2. Create a virtual environment (optional but recommended):
+
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows use venv\Scripts\activate
+    ```
+
+3. Install the required Python packages:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+## Usage
+
+1. Run the application:
+
+    ```bash
+    python main.py
+    ```
+
+2. The graphical interface will open, allowing you to:
+
+   - **Add a task:** Type the task into the input field and click "Add Task".
+   - **Delete a task:** Select the task from the list and click "Remove Task".
+   - **Mark tasks:** Click on a task to toggle between complete and incomplete.
