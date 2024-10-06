@@ -1,6 +1,7 @@
 # PyQt5 To-Do List Application
 
 This is a simple To-Do List application built with Python and PyQt5. It allows users to add, remove, and manage tasks in an intuitive graphical interface.
+<img width="430" alt="Screenshot 2024-10-06 at 10 57 12 PM" src="https://github.com/user-attachments/assets/cca74558-561a-43fc-a0cc-ce5c4f6053d1">
 
 ## Features
 
@@ -53,3 +54,6 @@ To run this application, you will need:
    - **Add a task:** Type the task into the input field and click "Add Task".
    - **Delete a task:** Select the task from the list and click "Remove Task".
    - **Mark tasks:** Click on a task to toggle between complete and incomplete.
+
+
+
