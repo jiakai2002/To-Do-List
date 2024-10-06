@@ -23,8 +23,8 @@ To run this application, you will need:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/pyqt5-todo-list.git
-    cd pyqt5-todo-list
+    git clone https://github.com/yourusername/todo-list.git
+    cd todo-list
     ```
 
 2. Create a virtual environment (optional but recommended):
